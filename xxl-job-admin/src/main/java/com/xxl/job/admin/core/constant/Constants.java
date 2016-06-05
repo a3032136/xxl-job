@@ -8,8 +8,12 @@ public class Constants {
 	
 	public enum JobGroupEnum{
 		DEFAULT("默认"),
-		WAIMAI("外卖"),
-		MOVIE("电影");
+		XTJC("系统基础"),
+		YWJC("业务基础"),
+		DFRW("垫付任务"),
+		HBRW("红包任务"),
+		ZKRW("直客任务"),
+		LHQRW("零花钱任务");
 		private String desc;
 		private JobGroupEnum(String desc){
 			this.desc = desc;
