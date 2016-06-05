@@ -35,7 +35,8 @@
 	    		<div class="col-xs-4">
 	              	<div class="input-group">
 	                	<span class="input-group-addon">任务组</span>
-                		<select class="form-control" id="jobGroup" >
+                        <select class="form-control" id="jobGroup" >
+                            <option value="" >全部</option>
                 			<#list JobGroupList as group>
                 				<option value="${group}" >${group.desc}</option>
                 			</#list>

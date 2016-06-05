@@ -60,6 +60,9 @@
 			<if test="triggerTimeEnd != null">
 				AND t.trigger_time <![CDATA[ <= ]]> #{triggerTimeEnd}
 			</if>
+			<if test="jobRes != null and jobRes != ''">
+				AND t.trigger_status = #{jobRes}
+			</if>
 		</trim>
 		ORDER BY id DESC
 		LIMIT #{offset}, #{pagesize}
@@ -80,6 +83,9 @@
 			</if>
 			<if test="triggerTimeEnd != null">
 				AND t.trigger_time <![CDATA[ <= ]]> #{triggerTimeEnd}
+			</if>
+			<if test="jobRes != null and jobRes != ''">
+				AND t.trigger_status = #{jobRes}
 			</if>
 		</trim>
 	</select>

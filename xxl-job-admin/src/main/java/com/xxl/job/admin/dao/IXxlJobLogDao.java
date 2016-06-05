@@ -1,9 +1,9 @@
 package com.xxl.job.admin.dao;
 
+import com.xxl.job.admin.core.model.XxlJobLog;
+
 import java.util.Date;
 import java.util.List;
-
-import com.xxl.job.admin.core.model.XxlJobLog;
 
 /**
  * job log
@@ -11,8 +11,8 @@ import com.xxl.job.admin.core.model.XxlJobLog;
  */
 public interface IXxlJobLogDao {
 	
-	public List<XxlJobLog> pageList(int offset, int pagesize, String jobGroup, String jobName, Date triggerTimeStart, Date triggerTimeEnd);
-	public int pageListCount(int offset, int pagesize, String jobGroup, String jobName, Date triggerTimeStart, Date triggerTimeEnd);
+	public List<XxlJobLog> pageList(int offset, int pagesize, String jobGroup, String jobName,String jobRes, Date triggerTimeStart, Date triggerTimeEnd);
+	public int pageListCount(int offset, int pagesize, String jobGroup, String jobName,String jobRes, Date triggerTimeStart, Date triggerTimeEnd);
 	
 	public XxlJobLog load(int id);
 	public XxlJobLog loadByGroupAndName(String jobGroup, String jobName);

@@ -1,21 +1,5 @@
 package com.xxl.job.admin.controller;
 
-import java.text.ParseException;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.Resource;
-
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.time.DateUtils;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.xxl.job.admin.core.constant.Constants.JobGroupEnum;
 import com.xxl.job.admin.core.model.ReturnT;
 import com.xxl.job.admin.core.model.XxlJobLog;
@@ -24,6 +8,20 @@ import com.xxl.job.core.handler.HandlerRepository.ActionEnum;
 import com.xxl.job.core.handler.HandlerRepository.HandlerParamEnum;
 import com.xxl.job.core.util.HttpUtil;
 import com.xxl.job.core.util.HttpUtil.RemoteCallBack;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.time.DateUtils;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.annotation.Resource;
+import java.text.ParseException;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * index controller
@@ -48,7 +46,7 @@ public class JobLogController {
 	@ResponseBody
 	public Map<String, Object> pageList(@RequestParam(required = false, defaultValue = "0") int start,  
 			@RequestParam(required = false, defaultValue = "10") int length,
-			String jobGroup, String jobName, String filterTime) {
+			String jobGroup, String jobName, String filterTime,String jobRes) {
 		
 		// parse param
 		Date triggerTimeStart = null;
@@ -64,8 +62,8 @@ public class JobLogController {
 		}
 		
 		// page query
-		List<XxlJobLog> list = xxlJobLogDao.pageList(start, length, jobGroup, jobName, triggerTimeStart, triggerTimeEnd);
-		int list_count = xxlJobLogDao.pageListCount(start, length, jobGroup, jobName, triggerTimeStart, triggerTimeEnd);
+		List<XxlJobLog> list = xxlJobLogDao.pageList(start, length, jobGroup, jobName,jobRes, triggerTimeStart, triggerTimeEnd);
+		int list_count = xxlJobLogDao.pageListCount(start, length, jobGroup, jobName,jobRes, triggerTimeStart, triggerTimeEnd);
 		
 		// package result
 		Map<String, Object> maps = new HashMap<String, Object>();

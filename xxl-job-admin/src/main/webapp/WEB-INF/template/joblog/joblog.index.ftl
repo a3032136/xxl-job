@@ -32,17 +32,28 @@
 		<!-- Main content -->
 	    <section class="content">
 	    	<div class="row">
-	    		<div class="col-xs-3">
+	    		<div class="col-xs-2">
  					<div class="input-group">
 	                	<span class="input-group-addon">任务组</span>
                 		<select class="form-control" id="jobGroup" >
-                			<#list JobGroupList as group>
+                            <option value="" >全部</option>
+							<#list JobGroupList as group>
                 				<option value="${group}" <#if jobGroup == group>selected</#if> >${group.desc}</option>
                 			</#list>
 	                  	</select>
 	              	</div>
 	            </div>
-	            <div class="col-xs-3">
+                <div class="col-xs-2">
+                    <div class="input-group">
+                        <span class="input-group-addon">调度结果</span>
+                        <select class="form-control" id="jobRes" >
+                            <option value="" >全部</option>
+                            <option value="SUCCESS" >成功</option>
+                            <option value="FAIL" >失败</option>
+                        </select>
+                    </div>
+                </div>
+	            <div class="col-xs-2">
 	              	<div class="input-group">
 	                	<span class="input-group-addon">任务名</span>
 	                	<input type="text" class="form-control" id="jobName" value="${jobName}" autocomplete="on" >
@@ -57,8 +68,6 @@
 	                		value2="<#if triggerTimeStart?exists && triggerTimeEnd?exists >${triggerTimeStart?if_exists?string('yyyy-MM-dd HH:mm:ss')} - ${triggerTimeEnd?if_exists?string('yyyy-MM-dd HH:mm:ss')}</#if>"  >
 	              	</div>
 	            </div>
-	            
-				
 	            <div class="col-xs-2">
 	            	<button class="btn btn-block btn-info" id="searchBtn">搜索</button>
 	            </div>

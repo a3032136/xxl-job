@@ -1,16 +1,14 @@
 package com.xxl.job.admin.dao.impl;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-
-import javax.annotation.Resource;
-
+import com.xxl.job.admin.core.model.XxlJobLog;
+import com.xxl.job.admin.dao.IXxlJobLogDao;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.xxl.job.admin.core.model.XxlJobLog;
-import com.xxl.job.admin.dao.IXxlJobLogDao;
+import javax.annotation.Resource;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * job log
@@ -23,7 +21,7 @@ public class XxlJobLogDaoImpl implements IXxlJobLogDao {
 	public SqlSessionTemplate sqlSessionTemplate;
 
 	@Override
-	public List<XxlJobLog> pageList(int offset, int pagesize, String jobGroup, String jobName, Date triggerTimeStart, Date triggerTimeEnd) {
+	public List<XxlJobLog> pageList(int offset, int pagesize, String jobGroup, String jobName,String jobRes, Date triggerTimeStart, Date triggerTimeEnd) {
 		HashMap<String, Object> params = new HashMap<String, Object>();
 		params.put("offset", offset);
 		params.put("pagesize", pagesize);
@@ -31,12 +29,12 @@ public class XxlJobLogDaoImpl implements IXxlJobLogDao {
 		params.put("jobName", jobName);
 		params.put("triggerTimeStart", triggerTimeStart);
 		params.put("triggerTimeEnd", triggerTimeEnd);
-		
+		params.put("jobRes", jobRes);
 		return sqlSessionTemplate.selectList("XxlJobLogMapper.pageList", params);
 	}
 
 	@Override
-	public int pageListCount(int offset, int pagesize, String jobGroup, String jobName, Date triggerTimeStart, Date triggerTimeEnd) {
+	public int pageListCount(int offset, int pagesize, String jobGroup, String jobName,String jobRes, Date triggerTimeStart, Date triggerTimeEnd) {
 		HashMap<String, Object> params = new HashMap<String, Object>();
 		params.put("offset", offset);
 		params.put("pagesize", pagesize);
@@ -44,7 +42,7 @@ public class XxlJobLogDaoImpl implements IXxlJobLogDao {
 		params.put("jobName", jobName);
 		params.put("triggerTimeStart", triggerTimeStart);
 		params.put("triggerTimeEnd", triggerTimeEnd);
-		
+		params.put("jobRes", jobRes);
 		return sqlSessionTemplate.selectOne("XxlJobLogMapper.pageListCount", params);
 	}
 

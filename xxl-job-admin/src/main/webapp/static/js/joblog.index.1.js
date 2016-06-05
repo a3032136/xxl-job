@@ -39,7 +39,8 @@ $(function() {
                 d.jobGroup = $('#jobGroup').val();
                 d.jobName = $('#jobName').val();
                 d.filterTime = $('#filterTime').val();
-            }
+				d.jobRes = $('#jobRes').val();
+			}
 	    },
 	    "searching": false,
 	    "ordering": false,
